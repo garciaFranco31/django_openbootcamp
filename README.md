@@ -38,3 +38,14 @@ Para crear un nuevo proyecto, lo que debemos hacer es posicionarnos en la carpet
 
 Esto lo que hace, es crear una carpeta con diferentes archivos .py y un archivo "manage.py". Todo esto tiene ya por default una estructura de proyecto.
 
+## Configuración DB
+
+Para crear la estructura de BD necesaria. Lo que hace Django es migrar los modelos de datos que tiene a nuestro sistema de permanencia de datos.
+
+Debemos estar dentro del entorno de la estructura de archivos (carpeta general del proyecto).
+
+```python
+    python manage.py migrate
+```
+
+El comando debe ejecutarse cada vez que modifiquemos el modelo de datos. Esto permite que la estructura de datos tenga su backup/cobertura en la BD del sistema que tenemos trabajando por detrás.
