@@ -25,3 +25,15 @@ Para realizar la instalación de Django, se debe ejecutar desde la terminal el s
 ## Archivo ".gitignore"
 
 Este archivo lo voy a utilizar para manejar los archivos y carpetas que no quiero que se pushen a github.
+
+# Iniciando con Django
+
+### Creación de un nuevo proyecto
+
+Para crear un nuevo proyecto, lo que debemos hacer es posicionarnos en la carpeta en la que deseamos crear el nuevo proyecto y desde la terminal, ejecutar el comando
+
+```python
+    django-admin startproject nombre_proyecto
+```
+
+Esto lo que hace, es crear una carpeta con diferentes archivos .py y un archivo "manage.py". Todo esto tiene ya por default una estructura de proyecto.
