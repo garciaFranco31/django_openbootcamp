@@ -37,3 +37,4 @@ Para crear un nuevo proyecto, lo que debemos hacer es posicionarnos en la carpet
 ```
 
 Esto lo que hace, es crear una carpeta con diferentes archivos .py y un archivo "manage.py". Todo esto tiene ya por default una estructura de proyecto.
+
