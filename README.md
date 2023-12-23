@@ -49,3 +49,16 @@ Debemos estar dentro del entorno de la estructura de archivos (carpeta general d
 ```
 
 El comando debe ejecutarse cada vez que modifiquemos el modelo de datos. Esto permite que la estructura de datos tenga su backup/cobertura en la BD del sistema que tenemos trabajando por detrás.
+
+```python
+    python manage.py runserver
+    """Este comando ejecutado desde la terminal, lo que hace es correr el servidor"""
+
+   """ Ctl + C interrumpe el servidor """ 
+```
+
+Siempre que sea posible, por convención, debemos llamar a la vista igual que a la URL. Es decir, si yo tengo una vista "saludo", la URL en lo posible debe  llamarse "saludo/"
+
+```python
+    path("saludo/", vista.saludo)
+```
