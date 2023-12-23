@@ -21,3 +21,7 @@ Para realizar la instalación de Django, se debe ejecutar desde la terminal el s
     pip install django
     """Instala el framework Django"""
 ```
+
+## Archivo ".gitignore"
+
+Este archivo lo voy a utilizar para manejar los archivos y carpetas que no quiero que se pushen a github.
