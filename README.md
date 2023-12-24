@@ -4,6 +4,10 @@
 Para este curso, voy a estar utilizando el framework venv para gestionar el entorno virtual de desarrollo. 
 Para crear un entorno virtual, se deben ejecutar desde la consola los siguientes comandos:
 ```python
+
+    pip install venv
+    """instala venv para poder ser utilizado"""
+
     python -m venv nombre_proyecto
     """nombre_proyecto puede ser un directorio ya existe, ya que en caso de que el mismo exista, se crearan todas las carpetas necesarias dentro de dicho directorio. Pero si el directorio no existe, lo crea y le agrega todas las carpetas necesarias."""
 
@@ -38,17 +42,7 @@ Para crear un nuevo proyecto, lo que debemos hacer es posicionarnos en la carpet
 
 Esto lo que hace, es crear una carpeta con diferentes archivos .py y un archivo "manage.py". Todo esto tiene ya por default una estructura de proyecto.
 
-## Configuración DB
-
-Para crear la estructura de BD necesaria. Lo que hace Django es migrar los modelos de datos que tiene a nuestro sistema de permanencia de datos.
-
-Debemos estar dentro del entorno de la estructura de archivos (carpeta general del proyecto).
-
-```python
-    python manage.py migrate
-```
-
-El comando debe ejecutarse cada vez que modifiquemos el modelo de datos. Esto permite que la estructura de datos tenga su backup/cobertura en la BD del sistema que tenemos trabajando por detrás.
+### Ejecutar servidor
 
 ```python
     python manage.py runserver
@@ -57,8 +51,5 @@ El comando debe ejecutarse cada vez que modifiquemos el modelo de datos. Esto pe
    """ Ctl + C interrumpe el servidor """ 
 ```
 
-Siempre que sea posible, por convención, debemos llamar a la vista igual que a la URL. Es decir, si yo tengo una vista "saludo", la URL en lo posible debe  llamarse "saludo/"
 
-```python
-    path("saludo/", vista.saludo)
-```
+
