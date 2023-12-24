@@ -92,3 +92,54 @@ render(request, 'simple.html',{})
 * el request es lo que generalmente recibimos como parámetro en la función definida en el archivo views.py.
 * como tenemos configurado que los templates van a buscarse dentro del directorio 'templates', no debemos poner nada más que el nombre del archivo html. En caso de que fuese más complejo, debemos poner la ruta completa. Ej: simple.html se encuentra dentro de la carpeta 'vistas', la cual está en la carpeta 'templates', la ruta nos quedaría 'vistas/simple.html'
 * el contexto es un diccionario, en este caso lo pasamos vacío porque el archivo html no requiere ninguna info para mostrar lo que contiene.
+
+## Contexto en plantillas (contenido dinámico)
+
+Para pasar contexto, lo que podemos hacer para que quede más limpio, es crear una variable llamada 'context',la cual será un diccionario (tiene elementos de tipo clave, valor), en el cual se encontraran los datos que debe mostrar el html.
+
+Para en el html poder indicar lo que se quiere mostrar, debemos poner el nombre de la clave dentro de dobles llaves ('{{}}')
+
+Dentro de la variable contexto podemos pasar también objetos, lo cual luego nos permite interactuar con sus métodos dentro del html
+
+```python
+   def dinamico(request, name):
+      context = {'name': name}
+       return render(request, 'dinamico.html', context)
+```
+```html
+   <h1>Hola {{name}}</h1> 
+   <!-- lo que hace en este caso, es mostrar el valor contenido dentro de la clave 'name' del diccionario que fue pasado por parámeto -->
+```
+
+## Bucles y condicionales en plantillas
+
+No debemos delegar acciones de visualización a nuestras vistas y tampoco acciones de lógica a nuestras plantillas, debido a que estariamos rompiendo con lo que propone django y el código sería más desordenado.
+
+* visualización -> template
+* logica -> vistas
+
+Para poder recorrer estructuras dentro de la plantilla y así mostar toda la información dinámicamente, lo que debemos hacer, dentro del archivo html, es utilizar {% %}, eso es lo que nos permite poner bucles y condicionales.
+
+Por lo tanto para mostrar información de un array en la plantilla, el código sería:
+
+```python
+   def dinamico(request, name):
+      categories = ['code', 'design', 'marketing', 'CEO', 'manager']
+      context = {'name': name, 'categories': categories}
+      return render(request, 'dinamico.html', context)
+```
+```html
+   <body>
+    <h1>Hola {{name}}</h1>
+    <h3>Categories</h3>
+    <ul>
+        {% for category in categories %}
+            {% if category == 'code' %}
+                <li><b>{{category}}</b></li>
+            {% else %}
+                <li>{{category}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+   </body>
+```
