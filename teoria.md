@@ -143,3 +143,58 @@ Por lo tanto para mostrar información de un array en la plantilla, el código s
     </ul>
    </body>
 ```
+
+## Comentarios y filtros
+
+La forma de escribir un comentario dentro de un archivo HTML en django que no se vea a la hora de inspeccionar el código en la web, se utilizan llaves y numerales 
+```django
+    {# Este es un comentario de una sola líena #}
+
+    {% comment %}
+        hola buenas tardes, soy un comentario de múltiples líneas en django
+    {% endcomment %}
+```
+
+Los filtros nos sirven para acceder a ciertas funcionalidades/módulos. Para utilizar un filtro, simplemente ponemos un pipe ('|'). Los filtros pueden anidarse según necesidades.
+
+```python
+    <h5>Total de ctegorías: {{categories|length}}</h5>
+    """En este caso, se está imprimeiendo la longitud de la lista de categorías en pantalla"""
+    <h5>Total de ctegorías: {{categories|filtro1|filtro2}}</h5>
+```
+
+## Archivos estáticos
+
+Permite enriquecer el contenido utilizando imagenes, archivos css o archivos javascript.
+La importación de los archivos estáticos se realiza por medio del archivo settings.py, en el apartado donde se encuentra la constante llamada 'STATIC_URL'.
+Se debe crear en el directorio raíz del proyecto, una carpeta de nombre 'static', la cual será la ruta default donde se irán a buscar los archivos estáticos.
+
+En el archivo HTML se indica que se cargarán archivos estáticos, antes de la etiqueta DOCTYPE que marca el inicio de la estructura HTML.
+
+```python
+    {% load static %}
+    """Está linea de código que se pone al inicio del arhivo HTML indica que el mismo va a necesitar cargar archivos estáticos para poder trabajar"""
+    <!DOCTYPE html>
+    ...
+```
+
+No se deben utilizar imports como lo hacemos cuando trabajamos únicamente con HTML, CSS y JS de forma convencional.
+
+El archivo CSS debe ser importado en el HTML de la siguiente forma:
+```html
+    <head>
+        ...
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+```
+
+Para que todo termine de funcionar correctamente, dentro del archivo 'settings.py', debemos poner debajo de la constente 'STATIC_URL', lo siguiente:
+```python
+    STATICFILES_DIRS = [
+        BASE_DIR/"static", 
+        'var/www/static'
+    ]
+```
+Básicamente es un array en donde vamos a indicar dónde se encuentran los archivos que vamos a necesitar utilizar. También con la línea 'var/www/static' vamos a dejar todo preparado para el momento en el que hagamos un deploy.
+
+La ruta que indicamos como estática, iniciará dentro del directorio raíz 'static'.
