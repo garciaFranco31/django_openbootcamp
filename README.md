@@ -5,16 +5,20 @@ Para este curso, voy a estar utilizando el framework venv para gestionar el ento
 Para crear un entorno virtual, se deben ejecutar desde la consola los siguientes comandos:
 ```python
 
+    #Instalar venv utilizando pip
     pip install venv
-    """instala venv para poder ser utilizado"""
 
+    #nombre_pryecto puede ser un directorio existente o no. En caso de que el directorio exista, se crean las carpetas 
+    #necesarias dentro de ese directorio. En caso de que el directorio no exista, lo crea y dentro de él
+    #crea todas las carpetas correspondientes a venv.
     python -m venv nombre_proyecto
-    """nombre_proyecto puede ser un directorio ya existe, ya que en caso de que el mismo exista, se crearan todas las carpetas necesarias dentro de dicho directorio. Pero si el directorio no existe, lo crea y le agrega todas las carpetas necesarias."""
 
+    #Para poder iniciar el entorno virtual (debido a que si no lo hacemos, no podremos trabajar) con él
+    #debemos ejecutar el comando:
     source nombre_proyecto/Scripts/activate 
-    """Este comando lo que hace, es iniciar el entorno virtual, siempre que querramos trabajar con él, debemos iniciarlo primero, caso contrario no podremos utilizar los paquetes o frameworks que hayamos instalado dentro del mismo."""
 
-    deactivate """Lo que hace este comando es desactivar el entorno virtual"""
+    #Cuando querramos cerrar el entorno virtual, debemos ejecutar el comando:
+    deactivate
 ```
 ## Instalación de Django
 
@@ -22,8 +26,8 @@ Para instalar Django, en mi caso lo primero que hago es activar el entorno virtu
 Para realizar la instalación de Django, se debe ejecutar desde la terminal el siguiente comando (El entorno vitual debe estar activado y debemos asegurarnos de que estamos trabajando dentro de él):
 
 ```python
+    #Instalar Django
     pip install django
-    """Instala el framework Django"""
 ```
 
 ## Archivo ".gitignore"
@@ -37,6 +41,7 @@ Este archivo lo voy a utilizar para manejar los archivos y carpetas que no quier
 Para crear un nuevo proyecto, lo que debemos hacer es posicionarnos en la carpeta en la que deseamos crear el nuevo proyecto y desde la terminal, ejecutar el comando
 
 ```python
+    #Crear un nuevo proyecto django
     django-admin startproject nombre_proyecto
 ```
 
@@ -45,10 +50,11 @@ Esto lo que hace, es crear una carpeta con diferentes archivos .py y un archivo 
 ### Ejecutar servidor
 
 ```python
+    #Ejecutando este comando, inicializamos el servidor de trabajo. Debemos estar posicionados en la carpeta raíz del proyecto
     python manage.py runserver
-    """Este comando ejecutado desde la terminal, lo que hace es correr el servidor"""
 
-   """ Ctl + C interrumpe el servidor """ 
+    #Para detener/interrumpir el servidor se debe utilizar la combinación de teclas
+   """ Ctrl + C""" 
 ```
 
 
