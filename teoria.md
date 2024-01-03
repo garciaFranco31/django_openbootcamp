@@ -198,3 +198,42 @@ Para que todo termine de funcionar correctamente, dentro del archivo 'settings.p
 Básicamente es un array en donde vamos a indicar dónde se encuentran los archivos que vamos a necesitar utilizar. También con la línea 'var/www/static' vamos a dejar todo preparado para el momento en el que hagamos un deploy.
 
 La ruta que indicamos como estática, iniciará dentro del directorio raíz 'static'.
+
+## Herencia de plantillas
+
+herramienta que permite no solo modularizar la estructura del codigo HTMl, si no que tambien permite evitar la reutilizacion de codigo. permitiendo que no haya duplicidad de etiquetas o estructuras en el codigo.
+
+Cuando declaramos una plantilla, podemos indicar que hereda de una plantilla padre, cierta estructura. Podemos generar un layout general del contenido y posteriormente las nuevas plantillas, deberan extender el contenido del layout y ademas especifique el detalle de cada uno de los elementos y particularidades que no comparte con el resto de las plantillas.
+
+Para eso, creamos un nuevo directorio dentro de la carpeta 'templates', la cual generalmente recibe el nombre de 'layout' y dentro se debe crear una plantilla, la cual debera contener todas las partes comunes que van a compartir el resto de las plantillas que heredaran de ella.
+
+Debemos indicar en la plantilla HTML padre que parte de ella sera extensible, es decir, que parte podra ser modificada por las plantillas hijas. Esto lo hacemos utilizando un bloque, el cual se declara de la siguiente forma: 
+
+```python
+ ... #parte del contenido HTML
+ <main>
+    """main es la etiqueta que va a modificar cada pagina"""
+    {%block nombre_bloque%} {% endblock %}
+ </main>
+ ... #parte del contenido HTML
+```
+
+Esto tambien puede utilziarse para que cada pagina tenga su propio archivo CSS.
+
+Para hacer que las paginas hijas extiendan de la pagina padre, lo que debemos hacer, al inicio, es declarar el bloque: 
+```python
+    {% extends "./layout/base.html" %}
+```
+
+En las plantillas hijas no es necesario rellenar todos los bloques de contenido de la plantilla padre, es decir si solamente necesito rellenar el bloque de contenido, pero no el de scripts, relleno solamente el de contenido, eso no genera ningun tipo de problemas.
+
+Para completar un bloque en llas plantillas hijas, lo que se debe hacer es declarar el bloque, junto con el contenido que quiero insertar en el mismo:
+
+```python
+    """En este caso, solamente estoy rellenando los bloqes de 'title' y 'content'"""
+    {% block title %} Herencia {% endblock %}
+
+    {% block content %}
+        <h1>Herencia</h1>
+    {% endblock  %}
+```
